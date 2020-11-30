@@ -13,6 +13,9 @@
 </template>
 
 <script>
+// import Vue from 'vue'
+// import VeeValidate from 'vee-validate';  // Add this
+// Vue.use(VeeValidate); 
 export default {
   name: 'Skills',
  data() {
