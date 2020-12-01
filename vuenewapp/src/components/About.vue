@@ -1,16 +1,19 @@
 <template>
     <div class="about">
     <h1>TODOS</h1>
-    <TodosList/>
+    <todos-list/>
+    <todo-form/>
   </div>
 </template>
 
 <script>
 import TodosList from "./TodosList.vue"
+import TodoForm from './TodoForm'
 export default {
   name: 'About',
   components: {
-    TodosList
+    TodosList,
+    TodoForm
   },
  data() {
     return {

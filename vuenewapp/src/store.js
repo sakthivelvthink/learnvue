@@ -5,7 +5,16 @@ Vue.use(Vuex)
 const createStore = () => {
   return new Vuex.Store({
     state: {
-   
+   todos: [
+       {
+           title:"work",
+           completed : false
+       },
+       {
+        title:"status",
+        completed : false
+    }
+   ]
     },
     mutations: {
      
