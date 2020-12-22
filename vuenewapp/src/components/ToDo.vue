@@ -5,7 +5,8 @@
 
 <script>
 export default {
-props: ["todo"]
+props: {
+  todo:Object}
 }
 </script>
 
