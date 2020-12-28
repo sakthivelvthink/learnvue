@@ -13,8 +13,9 @@ Vue.use(Vuex)
        {
         title:"status",
         completed : false
-    }
-   ]
+    },
+   ],
+   showSignup: true
     },
     mutations: {
         NEW_TODO(state,todoItem){
@@ -22,13 +23,20 @@ Vue.use(Vuex)
                 title:todoItem,
                 completed : false
             })
+        },
+        SHOW_SIGNUP_PAGE(state,showSignUp){
+            state.showSignup = showSignUp
         }
      
     },
     actions: {
         addNewTodo({commit},todoItem){ 
             commit('NEW_TODO',todoItem)  
+        },
+        showSignUp({commit},showSignUp){
+            commit('SHOW_SIGNUP_PAGE',showSignUp)
         }
+
     }
 })
 

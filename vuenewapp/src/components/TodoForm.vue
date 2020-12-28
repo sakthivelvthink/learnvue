@@ -6,6 +6,7 @@
 </template>
 
 <script>
+
 export default {
     name:"ToDoForm",
     data(){
@@ -15,7 +16,8 @@ export default {
     },
     methods: {
        addNewToDoItem() {
-           this.$store.dispatch('addNewTodo',this.newToDoItem)
+          this.$store.dispatch('addNewTodo',this.newToDoItem)
+        //  this.$router.push('/login')
        }
     }
 };

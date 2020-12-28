@@ -1,10 +1,8 @@
 <template>
  <div id="app">
-      <nav>
-        <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>
-      </nav>
-    <router-view/>
+      
+        <router-view to="/">Home</router-view>
+    
   </div>
 </template>
 
@@ -33,7 +31,7 @@ body, html {
   height: 100%;
 }
 #app {
-    width: 50%;
+    width: 80%;
 }
 nav {
   padding: 20px 20px 20px 0;
