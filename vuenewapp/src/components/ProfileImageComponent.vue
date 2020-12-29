@@ -2,23 +2,31 @@
   <div class="vue-tempalte">
     <form>
       <h3 v-if="showSignup">Sign In</h3>
-       <h3 v-else>Sign Up</h3>
+      <h3 v-else>Sign Up</h3>
 
       <div class="form-group">
-        <label>Email address</label>
-        <input type="email" class="form-control form-control-lg" v-model="userName"/>
+        <label v-text="email"></label>
+        <input
+          type="email"
+          class="form-control form-control-lg"
+          v-model="userName"
+        />
       </div>
 
       <div class="form-group">
         <label>Password</label>
-        <input type="password" class="form-control form-control-lg"  v-model="passWord"/>
+        <input
+          type="password"
+          class="form-control form-control-lg"
+          v-model="passWord"
+        />
       </div>
       <div>
-        <div   v-if="showSignup" id="hide">
+        <div v-if="showSignup" id="hide">
           <button
             type="submit"
             class="btn btn-dark btn-lg btn-block marginBottom"
-            @click="submit"
+            @click="clicked('Signin Button Clicked')"
           >
             Sign In
           </button>
@@ -32,59 +40,44 @@
         Sign Up
       </button>
       <div>
-      Data:
-      {{ signUpData }}
-    </div>
+        Data:
+        {{ signUpData }}
+      </div>
     </form>
   </div>
 </template>
 
 <script>
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from 'axios'
+import axios from "axios";
+import clickMixin from "../mixins/clickMixin";
 export default {
-   data () {
+  mixins: [clickMixin],
+  data() {
     return {
-      userName:"",
-      passWord:"",
-      signUpData:{}
-    }
+      userName: "",
+      passWord: "",
+      signUpData: {},
+      email:"EMAIL"
+    };
   },
   methods: {
     submit() {
       this.$router.push("/");
     },
     async signUp() {
-//  const res = await axios.post('http://localhost:4000/graphql', {
-//         query: ` 
-//         signup SignUp($userName: String!, $passWord: String!) {
-//           signUp(userName: $userName, passWord: $passWord) { 
-//             userName
-//             passWord
-//           }  
-//         }`,
-//         variables: {
-//           userName: "defdsfdsf",
-//           passWord: "dsfsdfdfsdsf"
-//         }
-//       })
-//       this.signUpData = res.data.data.signUp
-
-const res = await axios.post('http://localhost:4000/graphql', {
-        query: ` 
-        mutation UpdateAttackDamage($championName: String!, $attackDamage: String!) {
-          updateAttackDamage(name: $championName, attackDamage: $attackDamage) { 
-            name
-            attackDamage
-          }  
-        }`,
+      const res = await axios.post("http://localhost:4001/graphql", {
+        query: ` query {
+      contacts {
+        id,
+        lastName,
+        email
+      }
+    }`,
         variables: {
-          championName: this.userName,
-          attackDamage: "fgfdg"
-        }
-      })
-      this.signUpData = res.data.data.updateAttackDamage
-
+        },
+      });
+      this.signUpData = res.data.data.contacts;
 
       // For Show hide signup Page
       this.$store.dispatch("showSignUp", !this.$store.state.showSignup);
@@ -124,7 +117,7 @@ html,
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
 }
 .marginBottom {
-margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .vertical-center {
   display: flex;

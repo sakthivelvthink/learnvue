@@ -6,14 +6,16 @@
 
 <script>
 import ToDo from "./ToDo";
+ import { mapGetters } from 'vuex'
 export default {
   components: {
     ToDo,
   },
   computed:{
-      todos() {
-          return this.$store.state.todos
-      }
+    ... mapGetters ({
+      todos : "todos"
+    })
+     
   }
 };
 </script>
