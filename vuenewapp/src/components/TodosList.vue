@@ -6,16 +6,16 @@
 
 <script>
 import ToDo from "./ToDo";
- import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
+
 export default {
   components: {
     ToDo,
   },
   computed:{
-    ... mapGetters ({
-      todos : "todos"
-    })
-     
+     ...mapGetters({
+            todos:'doneTodos',
+        })
   }
 };
 </script>

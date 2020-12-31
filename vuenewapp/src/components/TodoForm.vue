@@ -6,7 +6,7 @@
 </template>
 
 <script>
-
+import {mapMutations} from 'vuex'
 export default {
     name:"ToDoForm",
     data(){
@@ -15,9 +15,11 @@ export default {
         }
     },
     methods: {
+      ...mapMutations({
+        addTodoItem:'NEW_TODO'
+      }),
        addNewToDoItem() {
-          this.$store.dispatch('addNewTodo',this.newToDoItem)
-        //  this.$router.push('/login')
+          this.addTodoItem(this.newToDoItem)
        }
     }
 };

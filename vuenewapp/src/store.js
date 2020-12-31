@@ -17,6 +17,11 @@ Vue.use(Vuex)
    ],
    showSignup: true
     },
+    getters:{
+        doneTodos: state => {
+            return state.todos
+          }
+    },
     mutations: {
         NEW_TODO(state,todoItem){
             state.todos.push({
