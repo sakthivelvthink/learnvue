@@ -4,7 +4,7 @@
       <label>File
         <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
       </label>
-      <button v-on:click="submitFile()">Submit</button>
+      <button v-on:click="download()">Submit</button>
     </div>
   </div>
 </template>
@@ -54,7 +54,16 @@ import axios from 'axios'
           console.log('FAILURE!!');
         });
       },
-
+     download () {
+        axios({
+            url: 'https://www.placecage.com/3499/3499',
+            onDownloadProgress(progress) {
+                console.log('download progress:', progress);
+            }
+        }).then(response => {
+            console.log('response has arrived',response);
+        });
+    },
       /*
         Handles a change on the file upload
       */
