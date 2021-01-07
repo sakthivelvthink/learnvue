@@ -76,9 +76,14 @@ export default {
     }`,
         variables: {
         },
-      });
+      })
       this.signUpData = res.data.data.contacts;
 
+
+let uri = 'https://api.first.org/data/v1/countries?region=africa&limit=3&pretty=true';
+axios.get(uri).then((response) => {
+  console.log(response.data)
+})
       // For Show hide signup Page
       this.$store.dispatch("showSignUp", !this.$store.state.showSignup);
     },

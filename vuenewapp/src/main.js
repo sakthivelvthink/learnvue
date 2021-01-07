@@ -5,6 +5,7 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import globlaMixin from "./mixins/globlaMixin"
+require('@/assets/main.scss');
 Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
 window.axios = require('axios');
